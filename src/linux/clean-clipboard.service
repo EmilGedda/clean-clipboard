@@ -1,0 +1,11 @@
+[Unit]
+Description=Filters unwanted text from the clipboard
+Requires=graphical.target
+
+[Service]
+ExecStart=/usr/bin/clean-clipboard
+RestartSec=1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

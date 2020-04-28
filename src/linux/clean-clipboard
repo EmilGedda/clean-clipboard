@@ -1,0 +1,13 @@
+#!/bin/bash
+
+filters=(
+    's;\(https://open.spotify.com/.*\)?si=.*;\1;'
+)
+
+while clipnotify; do
+    for clip in clipboard primary; do
+        xclip -o -sel "$clip"                           \
+            | sed $(printf -- '-e %s ' "${filters[@]}") \
+            | xclip -sel "$clip" &
+    done
+done
